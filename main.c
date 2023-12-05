@@ -103,11 +103,74 @@ void task3(){
     printf("\n\n");
 }
 
+void task4(){
+
+
+    printf("Aufgabe 4: Arrays addieren\n\n");
+
+    //Variablen definieren
+    int array1[] = {0,1,2,3,4,5,6,7,8,9,10}, array2[] = {10,11,12,13,14,15,16,17,18,19,20,21,22}, array3[13];
+    char header[][14]={"Position", "Wert - Array 1", "Wert - Array 2", "Wert - Array 3"};
+    int length1 = sizeof(array1)/sizeof(typeof(array1[0])), length2 = sizeof(array2)/sizeof(typeof(array2[0])), length3 = sizeof(array3)/sizeof(typeof(array3[0]));
+
+    //Schleife für die Zeilen
+    for(int i = 0; i < sizeof(header)/sizeof(header[0]); i++){
+
+        //Header ausgeben für die entsprechende Zeile
+        for(int j = 0; j < sizeof(header[i])/sizeof(header[i][0]); j++){
+            printf("%c", header[i][j]);
+        }
+        printf("\t:\t");
+
+        //Zeile 1 - Positionen vorgeben und ausgeben
+        if(i == 0){
+            for(int j = 0; j < length3; j++){
+                printf("%d\t", j);
+            }
+
+        }
+
+        //Zeile 2 - Array 1 ausgeben
+        if(i == 1){
+            for(int j = 0; j < length1; j++){
+                printf("%d\t", array1[j]);
+            }
+        }
+
+        //Zeile 3 - Arrayy 2 ausgeben
+        if(i == 2){
+            for(int j = 0; j < length2; j++){
+                printf("%d\t", array2[j]);
+            }
+        }
+
+        //Arrays addieren
+        for(int j = 0; j < length3; j++){
+            //Bereichsüberschreitung abfangen, da array1 kürzer als array2 ist.
+            if(j > length1 - 1){
+                array3[j] = 0 + array2[j];
+            } else {
+                array3[j] = array1[j] + array2[j];
+            }
+        }
+
+        //Zeile 4 - Array 3 ausgeben
+        if(i == 3){
+            for(int j = 0; j < length3; j++){
+                printf("%d\t", array3[j]);
+            }
+        }
+
+        printf("\n");
+    }
+}
+
 int main()
 {
     task1();
     task2();
     task3();
+    task4();
 
     return 0;
 }
