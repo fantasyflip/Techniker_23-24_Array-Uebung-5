@@ -238,15 +238,19 @@ void task7(){
 
     printf("Aufgabe 7: Caesar-Verschluesselung\n\n");
 
+    //Variablen definieren
     char clearText[] = "caesar", secretText[sizeof(clearText)], charset[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'}, secretCharset[sizeof(charset)];
     int rotationSteps = 3, charsetLength = sizeof(charset)/sizeof(typeof(charset[0])), clearTextLength = sizeof(clearText)/sizeof(typeof(clearText[0]));
 
+    //secrectCharset gleich füllen wie charset.
     for(int i = 0; i < charsetLength; i++){
         secretCharset[i] = charset[i];
     }
 
 
-    if (rotationSteps >= 0 && rotationSteps < charsetLength) {
+    //wenn der charset verschoben werden muss.
+    if (rotationSteps > 0 && rotationSteps < charsetLength) {
+        //secretCharset um rotationSteps verschieben
         for (int i = 0; i < rotationSteps; ++i) {
             char tempChar = secretCharset[0];
             for (int j = 0; j < charsetLength - 1; j++) {
@@ -256,9 +260,11 @@ void task7(){
         }
     }
 
+    //Den Cleartext char für char durchgehen
     for(int i = 0; i < clearTextLength; i++){
         int index = -1;
 
+        //index des clearText chars aus dem charset finden
         for(int j = 0; j < charsetLength; j++){
             if(charset[j] == clearText[i]){
                 index = j;
@@ -266,6 +272,7 @@ void task7(){
             }
         }
 
+        //wenn es den char im charset gibt den entsprechenden char aus dem secretCharset setzen.
         if(index != -1){
             secretText[i] = secretCharset[index];
         }
@@ -274,12 +281,14 @@ void task7(){
 
     printf("Klartext:\t");
 
+    //Klartext ausgeben
     for(int i = 0; i < clearTextLength; i++){
         printf("%c", clearText[i]);
     }
 
     printf("\n\nVerschluesselt:\t");
 
+    //secretText ausgeben
     for(int i = 0; i < clearTextLength - 1; i++){
         printf("%c", secretText[i]);
     }
