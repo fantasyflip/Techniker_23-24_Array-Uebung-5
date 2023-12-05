@@ -40,13 +40,34 @@ void task1(){
     }
 
     printf("\n\n");
+}
 
+void task2(){
 
+    printf("Aufgabe 2: Array Laenge vergleichen\n\n");
+
+    //Variablen definieren
+    char array1[] = "Das ist ein kurzer Array.", array2[] = "Das ist der Array, der laenger ist.";
+    int length1 = sizeof(array1)/sizeof(typeof(array1[0])), length2 = sizeof(array2)/sizeof(typeof(array2[0]));
+
+    //Längen vergleichen und entsprechenden Array ausgeben
+    if(length1 > length2){
+        for(int i = 0; i < length1; i++){
+            printf("%c",array1[i]);
+        }
+    } else {
+        for(int i = 0; i < length2; i++){
+            printf("%c",array2[i]);
+        }
+    }
+
+    printf("\n\n");
 }
 
 int main()
 {
     task1();
+    task2();
 
     return 0;
 }
