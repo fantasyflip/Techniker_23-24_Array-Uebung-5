@@ -196,7 +196,7 @@ void task5(){
     printf("\n\n");
 }
 
-void task6(){
+void task6(int runs){
 
     printf("Aufgabe 6: Laufschrift\n\n");
 
@@ -205,7 +205,7 @@ void task6(){
     int length = sizeof(sentence)/sizeof(typeof(sentence[0]));
 
     //Anzahl der Durchläufe der Laufschrift festlegen
-    for(int n = 0; n < length * 3 - 3; n++){
+    for(int n = 0; n < length * runs - runs; n++){
         //Alle Zeichen um einen Platz verschieben
         for(int i = 0; i < length; i++){
             char tempChar = sentence[i];
@@ -234,6 +234,60 @@ void task6(){
     printf("\n\n");
 }
 
+void task7(){
+
+    printf("Aufgabe 7: Caesar-Verschluesselung\n\n");
+
+    char clearText[] = "caesar", secretText[sizeof(clearText)], charset[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'}, secretCharset[sizeof(charset)];
+    int rotationSteps = 3, charsetLength = sizeof(charset)/sizeof(typeof(charset[0])), clearTextLength = sizeof(clearText)/sizeof(typeof(clearText[0]));
+
+    for(int i = 0; i < charsetLength; i++){
+        secretCharset[i] = charset[i];
+    }
+
+
+    if (rotationSteps >= 0 && rotationSteps < charsetLength) {
+        for (int i = 0; i < rotationSteps; ++i) {
+            char tempChar = secretCharset[0];
+            for (int j = 0; j < charsetLength - 1; j++) {
+                secretCharset[j] = secretCharset[j + 1];
+            }
+            secretCharset[charsetLength - 1] = tempChar;
+        }
+    }
+
+    for(int i = 0; i < clearTextLength; i++){
+        int index = -1;
+
+        for(int j = 0; j < charsetLength; j++){
+            if(charset[j] == clearText[i]){
+                index = j;
+                break;
+            }
+        }
+
+        if(index != -1){
+            secretText[i] = secretCharset[index];
+        }
+
+    }
+
+    printf("Klartext:\t");
+
+    for(int i = 0; i < clearTextLength; i++){
+        printf("%c", clearText[i]);
+    }
+
+    printf("\n\nVerschluesselt:\t");
+
+    for(int i = 0; i < clearTextLength - 1; i++){
+        printf("%c", secretText[i]);
+    }
+
+    printf("\n\n");
+
+}
+
 int main()
 {
     task1();
@@ -241,7 +295,8 @@ int main()
     task3();
     task4();
     task5();
-    task6();
+    task6(1);
+    task7();
 
     return 0;
 }
