@@ -161,8 +161,38 @@ void task4(){
             }
         }
 
-        printf("\n");
+        printf("\n\n");
     }
+}
+
+void task5(){
+
+    printf("Aufgabe 5: Paarweise tauschen\n\n");
+
+    //Variablen definieren
+    char sentence[] = "Die Technikerschule Erlangen ist schoen!";
+    int length = sizeof(sentence)/sizeof(typeof(sentence[0]));
+
+    //Satz ausgeben
+    for(int i = 0; i < length; i++){
+        printf("%c", sentence[i]);
+    }
+
+    printf("\n");
+
+    //Alle zwei Zeichen das Zeichen mit dem Nachfolger tauschen
+    for(int i = 0; i < length; i += 2){
+        char tempChar = sentence[i];
+        sentence[i] = sentence[i+1];
+        sentence[i+1] = tempChar;
+    }
+
+    //Satz ausgeben
+    for(int i = 0; i < length; i++){
+        printf("%c", sentence[i]);
+    }
+
+    printf("\n\n");
 }
 
 int main()
@@ -171,6 +201,7 @@ int main()
     task2();
     task3();
     task4();
+    task5();
 
     return 0;
 }
