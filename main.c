@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 void task1(){
 
@@ -195,6 +196,44 @@ void task5(){
     printf("\n\n");
 }
 
+void task6(){
+
+    printf("Aufgabe 6: Laufschrift\n\n");
+
+    //Variablen definieren
+    char sentence[] = "Das ist eine Laufschrift :D --- ";
+    int length = sizeof(sentence)/sizeof(typeof(sentence[0]));
+
+    //Anzahl der Durchläufe der Laufschrift festlegen
+    for(int n = 0; n < length * 3 - 3; n++){
+        //Alle Zeichen um einen Platz verschieben
+        for(int i = 0; i < length; i++){
+            char tempChar = sentence[i];
+            //Sonderfall für das erste Zeichen abfangen, da dieses ans Ende muss.
+            if(i == 0){
+                sentence[i] = sentence[i + 1];
+                sentence[length-1] = tempChar;
+            } else {
+                sentence[i] = sentence[i + 1];
+                sentence[i-1] = tempChar;
+            }
+        }
+
+        //Zeichenfolge ausgeben
+        for(int i = 0; i < length; i++){
+            printf("%c", sentence[i]);
+        }
+
+        //8ms warten
+        usleep(80000);
+        //Zurück an den Zeilenanfang springen
+        printf("\r");
+    }
+
+
+    printf("\n\n");
+}
+
 int main()
 {
     task1();
@@ -202,6 +241,7 @@ int main()
     task3();
     task4();
     task5();
+    task6();
 
     return 0;
 }
