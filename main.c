@@ -64,10 +64,50 @@ void task2(){
     printf("\n\n");
 }
 
+void task3(){
+
+    printf("Aufgabe 3: Array-Swap\n\n");
+
+    //Variablen definieren
+    char array1[] = "Programmieren ist schoen!", array2[] = "Der Computer funktioniert nicht!";
+    int length1 = sizeof(array1)/sizeof(typeof(array1[0])), length2 = sizeof(array2)/sizeof(typeof(array2[0]));
+    int limit = length1 > length2 ? length2 : length1;
+
+    //Arrays ausgeben
+    for(int i = 0; i < length1; i++){
+        printf("%c",array1[i]);
+    }
+    printf("\n");
+    for(int i = 0; i < length2; i++){
+        printf("%c",array2[i]);
+    }
+    printf("\n\n");
+
+
+    //Inhalt der Arrays tauschen. Der kleinere Array bestimmt das Limit. Alles was hinter dem Limit im längeren Array steht bleibt erhalten.
+    for(int i = 0; i < limit; i++){
+        char tempChar;
+        tempChar = array1[i];
+        array1[i] = array2[i];
+        array2[i] = tempChar;
+    }
+
+    //Arrays ausgeben
+    for(int i = 0; i < length1; i++){
+        printf("%c",array1[i]);
+    }
+    printf("\n");
+    for(int i = 0; i < length2; i++){
+        printf("%c",array2[i]);
+    }
+    printf("\n\n");
+}
+
 int main()
 {
     task1();
     task2();
+    task3();
 
     return 0;
 }
